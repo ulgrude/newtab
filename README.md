@@ -1,4 +1,4 @@
-# My Custom New Tab
+# Custom New Tab
 
 Just a simple start page to replace the default tab from your favorite web browser. It shows the time, some quick links, and picks a random photo from your local folders every time you open it.
 
