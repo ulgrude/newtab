@@ -9,56 +9,61 @@
 </head>
 <body>
 
+    <button id="editToggleBtn" title="Mode édition">✏️</button>
+
     <div class="time-display" id="currentTime">00:00:00</div>
 
-    <div class="links-section">
-        <div class="links-category">
-            <a class="link-card" href="https://www.youtube.com/">
-                <img src="img/youtube.svg" alt="YouTube">
-            </a>
-            <a class="link-card" href="https://www.reddit.com/">
-                <img src="img/reddit.svg" alt="Reddit">
-            </a>
-            <a class="link-card" href="https://www.instagram.com/">
-                <img src="img/instagram.svg" alt="Instagram">
-            </a>
-            <a class="link-card" href="https://www.twitch.tv/">
-                <img src="img/twitch.svg" alt="Twitch">
-            </a>
-        </div>
-        <div class="links-category">
-            <a class="link-card" href="https://itch.io/">
-                <img src="img/itch-io.svg" alt="Itch.io">
-            </a>
-            <a class="link-card" href="https://www.speedrun.com/">
-                <img src="img/speedrun.svg" alt="Speedrun.com">
-            </a>
-            <a class="link-card" href="steam://open/main">
-                <img src="img/steam.png" alt="Steam">
-            </a>
-            <a class="link-card" href="https://discord.com/channels/@me/">
-                <img src="img/discord-tile.svg" alt="Discord">
-            </a>
-        </div>
-        <div class="links-category">
-            <a class="link-card" href="https://chatgpt.com/">
-                <img src="img/ChatGPT-Logo.svg" alt="ChatGPT">
-            </a>
-            <a class="link-card" href="https://github.com/">
-                <img src="img/github.svg" alt="GitHub">
-            </a>
-            <a class="link-card" href="https://korben.info/">
-                <img src="img/korben.png" alt="Korben">
-            </a>
-        </div>
+    <div class="links-section" id="linksSection">
+        <div class="links-category" data-category="0"></div>
+        <div class="links-category" data-category="1"></div>
+        <div class="links-category" data-category="2"></div>
     </div>
 
     <div id="randomImageContainer">
         <img id="randomImage" src="" alt="Random Image" style="display: none;">
     </div>
 
-    <script src="scripts.js"></script>
+    <!-- Modal: Add / Edit a link -->
+    <div class="modal-overlay" id="addModal">
+        <div class="modal">
+            <h2 id="modalTitle">Add a link</h2>
+            <label>
+                URL
+                <input type="url" id="modalUrl" placeholder="https://example.com">
+            </label>
+            <label>
+                Icon (drag &amp; drop or click)
+                <div class="drop-zone" id="dropZone">
+                    <input type="file" id="fileInput" accept="image/*">
+                    <span id="dropLabel">Drag an image here or click to choose</span>
+                    <img class="preview-img" id="previewImg" alt="Aperçu">
+                </div>
+            </label>
+            <label>
+                Alternative text (alt)
+                <input type="text" id="modalAlt" placeholder="Link name">
+            </label>
+            <div class="modal-actions">
+                <button class="btn-delete" id="modalDelete" style="display:none;">Delete</button>
+                <div class="modal-actions-right">
+                    <button class="btn-cancel" id="modalCancel">Cancel</button>
+                    <button class="btn-save" id="modalSave">Add</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
+    <!-- Popup: Delete confirmation -->
+    <div class="confirm-overlay" id="confirmOverlay">
+        <div class="confirm-box">
+            <p>Delete this link?</p>
+            <div class="confirm-actions">
+                <button class="btn-cancel" id="confirmCancel">Cancel</button>
+                <button class="btn-confirm-delete" id="confirmDelete">Delete</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="scripts.js"></script>
 </body>
 </html>
-

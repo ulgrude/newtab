@@ -1,0 +1,21 @@
+{
+    "categories": [
+        [
+            { "id": "youtube", "url": "https://www.youtube.com/", "img": "img/youtube.svg", "alt": "YouTube" },
+            { "id": "reddit", "url": "https://www.reddit.com/", "img": "img/reddit.svg", "alt": "Reddit" },
+            { "id": "instagram", "url": "https://www.instagram.com/", "img": "img/instagram.svg", "alt": "Instagram" },
+            { "id": "twitch", "url": "https://www.twitch.tv/", "img": "img/twitch.svg", "alt": "Twitch" }
+        ],
+        [
+            { "id": "itch", "url": "https://itch.io/", "img": "img/itch-io.svg", "alt": "Itch.io" },
+            { "id": "speedrun", "url": "https://www.speedrun.com/", "img": "img/speedrun.svg", "alt": "Speedrun.com" },
+            { "id": "steam", "url": "steam://open/main", "img": "img/steam.png", "alt": "Steam" },
+            { "id": "discord", "url": "https://discord.com/channels/@me/", "img": "img/discord-tile.svg", "alt": "Discord" }
+        ],
+        [
+            { "id": "chatgpt", "url": "https://chatgpt.com/", "img": "img/ChatGPT-Logo.svg", "alt": "ChatGPT" },
+            { "id": "github", "url": "https://github.com/", "img": "img/github.svg", "alt": "GitHub" },
+            { "id": "korben", "url": "https://korben.info/", "img": "img/korben.png", "alt": "Korben" }
+        ]
+    ]
+}

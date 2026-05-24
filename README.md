@@ -1,25 +1,60 @@
 # Custom New Tab
 
-Just a simple start page to replace the default tab from your favorite web browser. It shows the time, some quick links, and picks a random photo from your local folders every time you open it.
+A simple start page to replace the default tab in your browser. It shows the time, some quick links, and picks a random photo from your local folders every time you open it.
+
+## Files overview
+
+| File | Role |
+|------|------|
+| `index.html` | Main page |
+| `styles.css` | Styles |
+| `scripts.js` | Logic (clock, links, drag & drop, modals) |
+| `api.php` | REST API to manage links (add, edit, delete, reorder) |
+| `links.json` | Links database (auto-managed by the API) |
+| `config.json` | Configuration (photo directories) |
+| `random-image.php` | Picks and serves a random photo |
 
 ## How to make it yours
 
-This isn't a "one size fits all" app. It's meant to be modified!
+### Links
 
-1.  **Change the Links ([index.html](https://github.com/ulgrude/newtab/blob/main/index.html))**: 
-    The links included (YouTube, Reddit, etc.) are just an example. 
-    *   Edit the `<a>` tags to point to your favorite sites.
-    *   Swap the icons in the `img/` folder with whatever matches your theme.
+Links are managed dynamically via the interface — no need to edit HTML.
 
-2.  **Set your Photos ([random-image.php](https://github.com/ulgrude/newtab/blob/main/random-image.php))**:
-    This script looks through local folders to find images.
-    *   Open [random-image.php](https://github.com/ulgrude/newtab/blob/main/random-image.php).
-    *   Change the `$rootDirectories` to point to **your** photo folders on your hard drive.
+- Click the ✏️ button to enter **edit mode**
+- Click **+** on any row to add a link (URL + icon + label)
+- Click the ✎ icon on a link to edit or delete it
+- **Drag and drop** links to reorder them, or move them to another row
 
-3.  **Run it**:
-    Since it uses PHP to read files, you need to host this on a local server (like XAMPP or WampServer). Point your browser's "New Tab" extension to `localhost/your-folder`.
+Links are stored in `links.json` and updated automatically by `api.php`.
 
-## A cool trick: App Links
-Check out the **Steam** link in the HTML:
-```html
-<a href="steam://open/main"> ... </a>
+### Photos
+
+Open `config.json` and set your local photo folders:
+
+```json
+{
+  "photo_directories": [
+    "C:/Users/Pictures/2025",
+    "C:/Users/Pictures/2024"
+  ]
+}
+```
+
+`random-image.php` reads this file and serves a random image from those folders each time the page loads.
+
+### Run it
+
+This project requires a local PHP server (e.g. [XAMPP](https://www.apachefriends.org/) or [WampServer](https://www.wampserver.com/)).
+
+1. Place the project folder in your server's web root (e.g. `htdocs/newtab`)
+2. Point your browser's "New Tab" extension to `http://localhost/newtab`
+
+## Tips
+
+**Open apps directly from a link** — use protocol URLs:
+
+```
+steam://open/main
+```
+
+Works with any app that registers a custom URL protocol.
