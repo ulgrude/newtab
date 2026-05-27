@@ -7,7 +7,7 @@ header('Access-Control-Allow-Headers: Content-Type');
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') { exit; }
 
 $linksFile = __DIR__ . '/links.json';
-$uploadDir = __DIR__ . '/img/uploads/';
+$uploadDir = __DIR__ . '/../img/uploads/';
 
 if (!is_dir($uploadDir)) mkdir($uploadDir, 0755, true);
 

@@ -271,6 +271,19 @@ const dropLabel  = document.getElementById('dropLabel');
 
 function handleImageFile(file) {
     if (!file || !file.type.startsWith('image/')) return;
+
+    // If editing and the chosen filename matches the existing img (not in uploads/), don't re-upload
+    if (modalMode === 'edit' && editingCard?.currentImg) {
+        const existingName = editingCard.currentImg.split('/').pop().split('?')[0];
+        if (file.name === existingName && !editingCard.currentImg.startsWith('img/uploads/')) {
+            selectedFile = null;
+            previewImg.src = editingCard.currentImg;
+            previewImg.style.display = 'block';
+            dropLabel.style.display  = 'none';
+            return;
+        }
+    }
+
     selectedFile = file;
     const reader = new FileReader();
     reader.onload = e => {
